@@ -1,6 +1,6 @@
 import json
-import os
 import re
+from datetime import datetime
 
 from django.conf import settings
 from django.templatetags.static import static
@@ -14,6 +14,12 @@ def slugify(s):
     s = re.sub(r"[\s_-]+", "-", s)
     s = re.sub(r"^-+|-+$", "", s)
     return s
+
+
+def now_iso_8601():
+    now = datetime.now()
+    now_date = now.strftime("%Y-%m-%dT%H:%M:%SZ")
+    return now_date
 
 
 def environment(**options):
@@ -42,6 +48,7 @@ def environment(**options):
                 "COOKIE_DOMAIN": settings.COOKIE_DOMAIN,
             },
             "url": reverse,
+            "now_iso_8601": now_iso_8601,
         }
     )
     env.filters.update({"slugify": slugify})
