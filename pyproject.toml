@@ -12,6 +12,7 @@ requests = "^2.31.0"
 tna-frontend-jinja = "0.1.33"
 django = "^5.0.7"
 psycopg2-binary = "^2.9.9"
+django-csp = "^3.8"
 
 [tool.poetry.group.dev]
 optional = true
