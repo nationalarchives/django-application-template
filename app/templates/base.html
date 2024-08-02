@@ -8,7 +8,7 @@
 {%- from 'components/header/macro.html' import tnaHeader -%}
 {%- from 'components/phase-banner/macro.html' import tnaPhaseBanner -%}
 
-{%- set theme = request.COOKIES['theme'] or 'light' -%}
+{%- set theme = request.COOKIES['theme'] or 'system' -%}
 {%- set themeAccent = themeAccent if themeAccent else 'yellow' -%}
 {%- set htmlAttributes = {
   'data-ga4id': app_config.GA4_ID or '',
@@ -50,14 +50,12 @@
 {% endblock %}
 
 {% block cookies %}
-{% if not page_data or not page_data.page_preview %}
 {% if 'cookie_preferences_set' not in request.COOKIES or not request.COOKIES['cookie_preferences_set'] %}
 {{ tnaCookieBanner({
   'serviceName': 'The National Archives',
   'cookiesUrl': url('main:cookies'),
   'cookiesDomain': app_config.COOKIE_DOMAIN
 }) | indent(6) }}
-{% endif %}
 {% endif %}
 {% endblock %}
 
@@ -86,6 +84,7 @@
 {% block footer %}
 {{ tnaFooter({
   'themeSelector': True,
+  'currentTheme': theme,
   'classes': 'tna-!--margin-top-l'
 }) | indent(4) }}
 {% endblock %}
