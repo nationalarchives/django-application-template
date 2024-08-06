@@ -30,12 +30,12 @@ docker compose exec dev format
 
 ## Environment variables
 
-In addition to the [base Docker image variables](https://github.com/nationalarchives/docker/blob/main/docker/tna-python/README.md#environment-variables), this application has support for:
+In addition to the [base Docker image variables](https://github.com/nationalarchives/docker/blob/main/docker/tna-python-django/README.md#environment-variables), this application has support for:
 
 | Variable                 | Purpose                                                   | Default                      |
 | ------------------------ | --------------------------------------------------------- | ---------------------------- |
 | `DJANGO_SETTINGS_MODULE` | The configuration to use                                  | `config.settings.production` |
-| `DEBUG`                  | If true, allow debugging[^1]                              | `False`                      |
+| `DEBUG`                  | If true, allow debugging                              | `False`                      |
 | `COOKIE_DOMAIN`          | The domain to save cookie preferences against             | _none_                       |
 | `DATABASE_NAME`          | The name of the Postgres database                         | _none_                       |
 | `DATABASE_USER`          | The username needed to access the Postgres database       | _none_                       |
@@ -53,5 +53,3 @@ In addition to the [base Docker image variables](https://github.com/nationalarch
 | `CSP_WORKER_SRC`         | A comma separated list of CSP rules for `worker-src`      | `'self'`                     |
 | `CSP_FRAME_SRC`          | A comma separated list of CSP rules for `frame-src`       | `'self'`                     |
 | `GA4_ID`                 | The Google Analytics 4 ID                                 | _none_                       |
-
-[^1] [Debugging in Flask](https://flask.palletsprojects.com/en/2.3.x/debugging/)
