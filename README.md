@@ -35,7 +35,7 @@ In addition to the [base Docker image variables](https://github.com/nationalarch
 | Variable                 | Purpose                                                   | Default                      |
 | ------------------------ | --------------------------------------------------------- | ---------------------------- |
 | `DJANGO_SETTINGS_MODULE` | The configuration to use                                  | `config.settings.production` |
-| `DEBUG`                  | If true, allow debugging                              | `False`                      |
+| `DEBUG`                  | If true, allow debugging                                  | `False`                      |
 | `COOKIE_DOMAIN`          | The domain to save cookie preferences against             | _none_                       |
 | `DATABASE_NAME`          | The name of the Postgres database                         | _none_                       |
 | `DATABASE_USER`          | The username needed to access the Postgres database       | _none_                       |
