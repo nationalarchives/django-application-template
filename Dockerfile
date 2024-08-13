@@ -15,7 +15,8 @@ RUN tna-build
 
 # Copy in the static assets from TNA Frontend
 RUN mkdir /app/app/static/assets; \
-    cp -r /app/node_modules/@nationalarchives/frontend/nationalarchives/assets/* /app/app/static/assets
+    cp -r /app/node_modules/@nationalarchives/frontend/nationalarchives/assets/* /app/app/static/assets; \
+    poetry run python /app/manage.py collectstatic --no-input --clear
 
 # Delete source files and tests
 RUN rm -fR /app/src /app/test

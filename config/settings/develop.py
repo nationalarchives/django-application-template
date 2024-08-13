@@ -8,5 +8,3 @@ from .features import *
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 
 DEBUG = strtobool(os.getenv("DEBUG", "True"))
-
-FORCE_HTTPS = strtobool(os.getenv("FORCE_HTTPS", "False"))
