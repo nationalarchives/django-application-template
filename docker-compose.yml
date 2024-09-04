@@ -30,7 +30,15 @@ services:
     image: postgres:latest
     environment:
       - POSTGRES_PASSWORD=postgres
+
   dev:
     image: ghcr.io/nationalarchives/tna-python-dev:preview
     volumes:
       - ./:/app
+
+  docs:
+    image: squidfunk/mkdocs-material
+    volumes:
+      - .:/docs
+    ports:
+      - 1082:8000
