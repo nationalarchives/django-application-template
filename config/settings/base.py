@@ -9,6 +9,7 @@ PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
+USE_X_FORWARDED_HOST = strtobool(os.getenv("USE_X_FORWARDED_HOST", "False"))
 
 # Application definition
 INSTALLED_APPS = [

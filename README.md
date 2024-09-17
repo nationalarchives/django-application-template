@@ -36,6 +36,7 @@ In addition to the [base Docker image variables](https://github.com/nationalarch
 | ------------------------ | --------------------------------------------------------- | --------------------------------------------------------- |
 | `DJANGO_SETTINGS_MODULE` | The configuration to use                                  | `config.settings.production`                              |
 | `ALLOWED_HOSTS`          | A comma-separated list of allowed hosts                   | _none_ on production and staging, `*` on develop and test |
+| `USE_X_FORWARDED_HOST`   | Use the `X-Forwarded-Host` header in preference to `Host` | `False`                                                   |
 | `DEBUG`                  | If true, allow debugging                                  | `False`                                                   |
 | `COOKIE_DOMAIN`          | The domain to save cookie preferences against             | _none_                                                    |
 | `DATABASE_NAME`          | The name of the Postgres database                         | _none_                                                    |
