@@ -16,10 +16,8 @@ runs:
       run: poetry install --no-interaction --no-root --with dev
       shell: bash
     - name: Collect statics assets
-      run: |
-        mkdir app/static
-        poetry run python manage.py collectstatic
+      run: poetry run python /app/manage.py collectstatic
       shell: bash
     - name: Run Python tests
-      run: poetry run python manage.py test
+      run: poetry run python /app/manage.py test
       shell: bash
