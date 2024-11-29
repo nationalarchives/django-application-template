@@ -1,48 +1,56 @@
+import logging
+
 import requests
 
-# from flask import current_app
+logger = logging.getLogger(__name__)
 
 
 class ApiResourceNotFound(Exception):
     pass
 
 
-class BaseAPI:
+class JSONAPIClient:
     api_url = ""
-    api_path = "/"
     params = {}
 
-    def __init__(self, api_url):
+    def __init__(self, api_url, params={}):
         self.api_url = api_url
+        self.params = params
 
     def add_parameter(self, key, value):
         self.params[key] = value
 
-    def get_results(self, page=None):
-        if page:
-            self.add_parameter("page", page)
-        url = f"{self.api_url}{self.api_path}"
-        # current_app.logger.debug(
-        #     f"API endpoint requested: {url} (params {self.params})"
-        # )
-        try:
-            response = requests.get(url, params=self.params)
-        except ConnectionError:
-            # current_app.logger.error(f"API connection error for: {url}")
-            raise Exception("A connection error occured with the API")
-        if response.status_code == 404:
-            # current_app.logger.warning(f"Resource not found: {url}")
-            raise ApiResourceNotFound("Resource not found")
-        if response.status_code == requests.codes.ok:
-            return self.parse_response(response)
-        # current_app.logger.error(
-        #     f"API responded with {response.status_code} status for {url}"
-        # )
-        raise ConnectionError("Request to API failed")
+    def add_parameters(self, params):
+        self.params = self.params | params
 
-    def parse_response(self, response):
+    def get(self, path="/"):
+        url = f"{self.api_url}/{path.lstrip('/')}"
         try:
-            return response.json()
-        except requests.exceptions.JSONDecodeError:
-            # current_app.logger.error("API provided non-JSON response")
-            raise ConnectionError("API provided non-JSON response")
+            response = requests.get(
+                url,
+                params=self.params,
+                headers={
+                    "Cache-Control": "no-cache",
+                    "Accept": "application/json",
+                },
+            )
+        except ConnectionError:
+            logger.error(f"JSON API connection error for: {response.url}")
+            raise Exception("A connection error occured with the JSON API")
+        if response.status_code == requests.codes.ok:
+            logger.debug(f"JSON API endpoint requested: {response.url}")
+            try:
+                return response.json()
+            except requests.exceptions.JSONDecodeError:
+                logger.error("JSON API provided non-JSON response")
+                raise ConnectionError("JSON API provided non-JSON response")
+        if response.status_code == 403:
+            logger.warning(f"Forbidden: {response.url}")
+            raise ConnectionError("Forbidden")
+        if response.status_code == 404:
+            logger.warning(f"Resource not found: {response.url}")
+            raise ApiResourceNotFound("Resource not found")
+        logger.error(
+            f"JSON API responded with {response.status_code} status for {response.url}"
+        )
+        raise ConnectionError("Request to API failed")
