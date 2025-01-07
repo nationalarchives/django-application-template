@@ -37,6 +37,7 @@ In addition to the [base Docker image variables](https://github.com/nationalarch
 
 | Variable                 | Purpose                                                   | Default                                                   |
 | ------------------------ | --------------------------------------------------------- | --------------------------------------------------------- |
+| `ENVIRONMENT_NAME`       | The name of the environment (for reporting purposes)      | `production`                                              |
 | `DJANGO_SETTINGS_MODULE` | The configuration to use                                  | `config.settings.production`                              |
 | `ALLOWED_HOSTS`          | A comma-separated list of allowed hosts                   | _none_ on production and staging, `*` on develop and test |
 | `USE_X_FORWARDED_HOST`   | Use the `X-Forwarded-Host` header in preference to `Host` | `False`                                                   |

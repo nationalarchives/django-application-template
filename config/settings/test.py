@@ -8,7 +8,7 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 
 INSTALLED_APPS = INSTALLED_APPS + ["test"]
 
-ENVIRONMENT = "test"
+ENVIRONMENT_NAME = "test"
 
 SECRET_KEY = "abc123"
 

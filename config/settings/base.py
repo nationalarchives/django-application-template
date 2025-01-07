@@ -124,7 +124,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # TNA Configuration
 
-ENVIRONMENT: str = os.environ.get("ENVIRONMENT", "production")
+ENVIRONMENT_NAME: str = os.environ.get("ENVIRONMENT_NAME", "production")
 
 BUILD_VERSION: str = os.environ.get("BUILD_VERSION", "")
 TNA_FRONTEND_VERSION: str = ""
