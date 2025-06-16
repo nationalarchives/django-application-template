@@ -114,7 +114,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "app/static")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "app", "static")]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
@@ -149,24 +149,18 @@ DEBUG: bool = strtobool(os.getenv("DEBUG", "False"))
 COOKIE_DOMAIN: str = os.environ.get("COOKIE_DOMAIN", "")
 
 CSP_IMG_SRC: list[str] = os.environ.get("CSP_IMG_SRC", "'self'").split(",")
-CSP_SCRIPT_SRC: list[str] = os.environ.get("CSP_SCRIPT_SRC", "'self'").split(
+CSP_SCRIPT_SRC: list[str] = os.environ.get("CSP_SCRIPT_SRC", "'self'").split(",")
+CSP_SCRIPT_SRC_ELEM: list[str] = os.environ.get("CSP_SCRIPT_SRC_ELEM", "'self'").split(
     ","
 )
-CSP_SCRIPT_SRC_ELEM: list[str] = os.environ.get(
-    "CSP_SCRIPT_SRC_ELEM", "'self'"
-).split(",")
 CSP_STYLE_SRC: list[str] = os.environ.get("CSP_STYLE_SRC", "'self'").split(",")
-CSP_STYLE_SRC_ELEM: list[str] = os.environ.get(
-    "CSP_STYLE_SRC_ELEM", "'self'"
-).split(",")
+CSP_STYLE_SRC_ELEM: list[str] = os.environ.get("CSP_STYLE_SRC_ELEM", "'self'").split(
+    ","
+)
 CSP_FONT_SRC: list[str] = os.environ.get("CSP_FONT_SRC", "'self'").split(",")
-CSP_CONNECT_SRC: list[str] = os.environ.get("CSP_CONNECT_SRC", "'self'").split(
-    ","
-)
+CSP_CONNECT_SRC: list[str] = os.environ.get("CSP_CONNECT_SRC", "'self'").split(",")
 CSP_MEDIA_SRC: list[str] = os.environ.get("CSP_MEDIA_SRC", "'self'").split(",")
-CSP_WORKER_SRC: list[str] = os.environ.get("CSP_WORKER_SRC", "'self'").split(
-    ","
-)
+CSP_WORKER_SRC: list[str] = os.environ.get("CSP_WORKER_SRC", "'self'").split(",")
 CSP_FRAME_SRC: list[str] = os.environ.get("CSP_FRAME_SRC", "'self'").split(",")
 
 CSP_SELF = "'self'"
@@ -178,44 +172,22 @@ CONTENT_SECURITY_POLICY = (
             "base-uri": CSP_NONE,
             "object-src": CSP_NONE,
             **({"img-src": CSP_IMG_SRC} if CSP_IMG_SRC != [CSP_SELF] else {}),
-            **(
-                {"script-src": CSP_SCRIPT_SRC}
-                if CSP_SCRIPT_SRC != [CSP_SELF]
-                else {}
-            ),
+            **({"script-src": CSP_SCRIPT_SRC} if CSP_SCRIPT_SRC != [CSP_SELF] else {}),
             **(
                 {"script-src-elem": CSP_SCRIPT_SRC_ELEM}
                 if CSP_SCRIPT_SRC_ELEM != [CSP_SELF]
                 else {}
             ),
-            **(
-                {"style-src": CSP_STYLE_SRC}
-                if CSP_STYLE_SRC != [CSP_SELF]
-                else {}
-            ),
-            **(
-                {"font-src": CSP_FONT_SRC} if CSP_FONT_SRC != [CSP_SELF] else {}
-            ),
+            **({"style-src": CSP_STYLE_SRC} if CSP_STYLE_SRC != [CSP_SELF] else {}),
+            **({"font-src": CSP_FONT_SRC} if CSP_FONT_SRC != [CSP_SELF] else {}),
             **(
                 {"connect-src": CSP_CONNECT_SRC}
                 if CSP_CONNECT_SRC != [CSP_SELF]
                 else {}
             ),
-            **(
-                {"media-src": CSP_MEDIA_SRC}
-                if CSP_MEDIA_SRC != [CSP_SELF]
-                else {}
-            ),
-            **(
-                {"worker-src": CSP_WORKER_SRC}
-                if CSP_WORKER_SRC != [CSP_SELF]
-                else {}
-            ),
-            **(
-                {"frame-src": CSP_FRAME_SRC}
-                if CSP_FRAME_SRC != [CSP_SELF]
-                else {}
-            ),
+            **({"media-src": CSP_MEDIA_SRC} if CSP_MEDIA_SRC != [CSP_SELF] else {}),
+            **({"worker-src": CSP_WORKER_SRC} if CSP_WORKER_SRC != [CSP_SELF] else {}),
+            **({"frame-src": CSP_FRAME_SRC} if CSP_FRAME_SRC != [CSP_SELF] else {}),
         }
     },
 )
