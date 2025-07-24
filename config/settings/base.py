@@ -150,13 +150,7 @@ COOKIE_DOMAIN: str = os.environ.get("COOKIE_DOMAIN", "")
 
 CSP_IMG_SRC: list[str] = os.environ.get("CSP_IMG_SRC", "'self'").split(",")
 CSP_SCRIPT_SRC: list[str] = os.environ.get("CSP_SCRIPT_SRC", "'self'").split(",")
-CSP_SCRIPT_SRC_ELEM: list[str] = os.environ.get("CSP_SCRIPT_SRC_ELEM", "'self'").split(
-    ","
-)
 CSP_STYLE_SRC: list[str] = os.environ.get("CSP_STYLE_SRC", "'self'").split(",")
-CSP_STYLE_SRC_ELEM: list[str] = os.environ.get("CSP_STYLE_SRC_ELEM", "'self'").split(
-    ","
-)
 CSP_FONT_SRC: list[str] = os.environ.get("CSP_FONT_SRC", "'self'").split(",")
 CSP_CONNECT_SRC: list[str] = os.environ.get("CSP_CONNECT_SRC", "'self'").split(",")
 CSP_MEDIA_SRC: list[str] = os.environ.get("CSP_MEDIA_SRC", "'self'").split(",")
@@ -173,11 +167,6 @@ CONTENT_SECURITY_POLICY = (
             "object-src": CSP_NONE,
             **({"img-src": CSP_IMG_SRC} if CSP_IMG_SRC != [CSP_SELF] else {}),
             **({"script-src": CSP_SCRIPT_SRC} if CSP_SCRIPT_SRC != [CSP_SELF] else {}),
-            **(
-                {"script-src-elem": CSP_SCRIPT_SRC_ELEM}
-                if CSP_SCRIPT_SRC_ELEM != [CSP_SELF]
-                else {}
-            ),
             **({"style-src": CSP_STYLE_SRC} if CSP_STYLE_SRC != [CSP_SELF] else {}),
             **({"font-src": CSP_FONT_SRC} if CSP_FONT_SRC != [CSP_SELF] else {}),
             **(
