@@ -6,6 +6,7 @@ services:
         IMAGE: ghcr.io/nationalarchives/tna-python-django-root
         IMAGE_TAG: 0
     environment:
+      - ENVIRONMENT_NAME=localhost
       - RUNTIME=develop
       - DJANGO_SETTINGS_MODULE=config.settings.develop
       - ALLOW_INSECURE=true
