@@ -24,4 +24,4 @@ RUN mkdir /app/app/static/assets; \
 RUN rm -fR /app/src /app/test /app/docs
 
 # Run the application
-CMD ["tna-run", "config.wsgi:application"]
+CMD ["tna-wsgi", "config.wsgi:application"]

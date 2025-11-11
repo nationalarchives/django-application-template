@@ -1,6 +1,23 @@
 import os
 
-from .base import *
+from config.util import strtobool
+
 from .features import *
+from .production import *
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
+
+DEBUG: bool = strtobool(os.getenv("DEBUG", "False"))
+
+if DEBUG:
+    INSTALLED_APPS += [  # noqa: F405
+        "debug_toolbar",
+    ]
+
+    MIDDLEWARE = [
+        "debug_toolbar.middleware.DebugToolbarMiddleware",
+    ] + MIDDLEWARE  # noqa: F405
+
+    DEBUG_TOOLBAR_CONFIG = {
+        "SHOW_COLLAPSED": True,
+    }
