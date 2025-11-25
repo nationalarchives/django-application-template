@@ -1,4 +1,4 @@
 from .features import *
 from .production import *
 
-pass
+DEBUG: bool = strtobool(os.getenv("DEBUG", "False"))
