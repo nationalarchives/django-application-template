@@ -19,8 +19,8 @@ whitenoise = "^6.7.0"
 optional = true
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.1.1"
 requests-mock = "^1.12.1"
+pytest-django = "^4.11.1"
 
 [build-system]
 requires = ["poetry-core"]
@@ -33,3 +33,4 @@ include = '\.pyi?$'
 testpaths = [
     "test",
 ]
+DJANGO_SETTINGS_MODULE = "config.settings.test"
