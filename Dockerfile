@@ -20,7 +20,7 @@ RUN mkdir -p /app/app/static/assets; \
     cp -r /app/node_modules/@nationalarchives/frontend/nationalarchives/assets/* /app/app/static/assets; \
     poetry run python /app/manage.py collectstatic --no-input --clear
 
-# Delete source files, tests and docs
+# Delete source files
 RUN rm -fR /app/src
 
 # RUN tna-clean  # TODO: Enable once the new images have been published
