@@ -3,9 +3,6 @@
 import os
 import sys
 
-# THIS FILE IS ONLY USED FOR LOCAL DEVELOPMENT - IN PRODUCTION, THIS FILE IS USED:
-# https://github.com/nationalarchives/docker/blob/main/docker/tna-python-django/lib/manage.py
-
 
 def main():
     """Run administrative tasks."""
