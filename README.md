@@ -1,4 +1,4 @@
-# TNA Python Flask Application
+# TNA Python Django Application
 
 ## Quickstart
 
