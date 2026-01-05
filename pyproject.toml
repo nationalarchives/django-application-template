@@ -10,9 +10,8 @@ packages = [{include = "app"}]
 python = "^3.13"
 requests = "^2.31.0"
 tna-frontend-jinja = "0.29.1"
-django = "^5.0.7"
+django = "^6.0"
 psycopg2-binary = "^2.9.9"
-django-csp = "^4.0"
 whitenoise = "^6.7.0"
 
 [tool.poetry.group.dev]
