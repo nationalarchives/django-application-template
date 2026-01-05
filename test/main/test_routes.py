@@ -17,10 +17,11 @@ class MainTestCase(TestCase):
             rv,
             '<h1 class="tna-heading-xl">TNA Django application</h1>',
             status_code=200,
+            html=True,
         )
 
     def test_cookies(self):
         rv = self.client.get("/cookies/")
         self.assertContains(
-            rv, '<h1 class="tna-heading-xl">Cookies</h1>', status_code=200
+            rv, '<h1 class="tna-heading-xl">Cookies</h1>', status_code=200, html=True
         )
