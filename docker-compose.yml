@@ -36,6 +36,8 @@ services:
     image: postgres:latest
     environment:
       - POSTGRES_PASSWORD=postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
 
   docs:
     image: squidfunk/mkdocs-material
@@ -43,3 +45,6 @@ services:
       - .:/docs
     ports:
       - 1082:8000
+
+volumes:
+  pgdata:
