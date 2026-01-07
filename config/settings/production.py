@@ -5,7 +5,7 @@ from sysconfig import get_path
 from config.util import strtobool
 from django.utils.csp import CSP
 
-from .features import *
+from .features import *  # noqa: F401, F403
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
