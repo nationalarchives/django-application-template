@@ -11,6 +11,8 @@ DEBUG: bool = strtobool(os.getenv("DEBUG", "False"))
 
 if DEBUG:
     try:
+        import debug_toolbar  # noqa: F401
+
         INSTALLED_APPS += [  # noqa: F405
             "debug_toolbar",
         ]
@@ -24,4 +26,5 @@ if DEBUG:
             "SHOW_COLLAPSED": True,
         }
     except ImportError:
+        # Django debug toolbar is not available
         pass
