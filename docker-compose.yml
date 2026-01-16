@@ -8,8 +8,6 @@ services:
     environment:
       - ENVIRONMENT_NAME=localhost
       - DJANGO_SETTINGS_MODULE=config.settings.develop
-      - ALLOW_INSECURE=true
-      - APPLICATION_PROTOCOL=http
       - DEBUG=true
       - SECRET_KEY=abc123
       - NPM_DEVELOP_COMMAND=dev
