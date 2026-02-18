@@ -5,6 +5,7 @@ from .production import *  # noqa: F401, F403
 from .production import BASE_DIR, INSTALLED_APPS
 
 ENVIRONMENT_NAME = "test"
+BUILD_VERSION = "test"
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 

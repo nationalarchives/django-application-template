@@ -6,6 +6,10 @@ class MainTestCase(TestCase):
         rv = self.client.get("/healthcheck/live/")
         self.assertContains(rv, "ok", status_code=200)
 
+    def test_healthcheck_version(self):
+        rv = self.client.get("/healthcheck/version/")
+        self.assertContains(rv, "test", status_code=200)
+
     def test_trailing_slash_redirects(self):
         rv = self.client.get("/healthcheck/live")
         self.assertRedirects(rv, "/healthcheck/live/", status_code=301)
