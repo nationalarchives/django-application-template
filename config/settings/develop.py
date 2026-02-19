@@ -1,4 +1,5 @@
 import os
+import sys
 
 from config.util import strtobool
 
@@ -9,7 +10,11 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 
 DEBUG: bool = strtobool(os.getenv("DEBUG", "False"))
 
-if DEBUG:
+IS_TESTING = any(
+    arg in {"test", "pytest"} for arg in sys.argv
+)  # Bypass debug toolbar when running tests, DJDT can't be used with tests (debug_toolbar.E001)
+
+if DEBUG and not IS_TESTING:
     try:
         import debug_toolbar  # noqa: F401
 
