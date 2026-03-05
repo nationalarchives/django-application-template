@@ -5,6 +5,9 @@
 ```sh
 # Build and start the container
 docker compose up -d
+
+# When you start the app for the first time, you need to run the migrations
+docker compose exec app poetry run python manage.py migrate
 ```
 
 ### Add the static assets
