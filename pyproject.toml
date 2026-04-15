@@ -13,6 +13,7 @@ tna-frontend-jinja = "0.38.0"
 django = "^6.0"
 psycopg2-binary = "^2.9.9"
 whitenoise = "^6.7.0"
+tna-utilities = "^1.4.0"
 
 [tool.poetry.group.dev]
 optional = true

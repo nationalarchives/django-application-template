@@ -45,6 +45,7 @@ In addition to the [base Docker image variables](https://github.com/nationalarch
 | `USE_X_FORWARDED_HOST`   | Use the `X-Forwarded-Host` header in preference to `Host` | `False`                                                   |
 | `DEBUG`                  | If true, allow debugging                                  | `False`                                                   |
 | `COOKIE_DOMAIN`          | The domain to save cookie preferences against             | _none_                                                    |
+| `COOKIE_PREFERENCES_URL` | The URL for changing cookie preferences                   | _none_                                                    |
 | `DATABASE_NAME`          | The name of the Postgres database                         | _none_                                                    |
 | `DATABASE_USER`          | The username needed to access the Postgres database       | _none_                                                    |
 | `DATABASE_PASSWORD`      | The password needed to access the Postgres database       | _none_                                                    |

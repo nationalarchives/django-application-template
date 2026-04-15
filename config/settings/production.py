@@ -153,8 +153,10 @@ if not SECRET_KEY:
     )
 
 DEBUG: bool = False
+LOG_LEVEL: str = os.environ.get("LOG_LEVEL", "debug").upper()
 
 COOKIE_DOMAIN: str = os.environ.get("COOKIE_DOMAIN", "")
+COOKIE_PREFERENCES_URL: str = os.environ.get("COOKIE_PREFERENCES_URL", "/cookies/")
 
 CSP_REPORT_URL: str = os.environ.get("CSP_REPORT_URL", "")
 if CSP_REPORT_URL and BUILD_VERSION:

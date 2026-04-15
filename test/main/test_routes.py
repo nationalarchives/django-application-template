@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.test import TestCase
 
 
@@ -8,7 +9,7 @@ class MainTestCase(TestCase):
 
     def test_healthcheck_version(self):
         rv = self.client.get("/healthcheck/version/")
-        self.assertContains(rv, "test", status_code=200)
+        self.assertContains(rv, settings.BUILD_VERSION, status_code=200)
 
     def test_trailing_slash_redirects(self):
         rv = self.client.get("/healthcheck/live")
@@ -21,10 +22,4 @@ class MainTestCase(TestCase):
             '<h1 class="tna-heading-xl">TNA Django application</h1>',
             status_code=200,
             html=True,
-        )
-
-    def test_cookies(self):
-        rv = self.client.get("/cookies/")
-        self.assertContains(
-            rv, '<h1 class="tna-heading-xl">Cookies</h1>', status_code=200, html=True
         )

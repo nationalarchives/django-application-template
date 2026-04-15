@@ -8,7 +8,9 @@ services:
     environment:
       - ENVIRONMENT_NAME=localhost
       - DJANGO_SETTINGS_MODULE=config.settings.develop
+      - BUILD_VERSION=local
       - DEBUG=true
+      - LOG_LEVEL=info
       - SECRET_KEY=abc123
       - NPM_DEVELOP_COMMAND=dev
       - DATABASE_NAME=postgres

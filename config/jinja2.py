@@ -1,7 +1,7 @@
 import json
-import re
-from datetime import datetime
 
+from app.lib.context_processor import now_iso_8601
+from app.lib.template_filters import slugify
 from django import template
 from django.conf import settings
 from django.templatetags.static import StaticNode
@@ -32,22 +32,6 @@ def static_with_version(path, **kwargs):
     return StaticNodeWithVersion.handle_simple(path, **kwargs)
 
 
-def slugify(s):
-    if not s:
-        return s
-    s = s.lower().strip()
-    s = re.sub(r"[^\w\s-]", "", s)
-    s = re.sub(r"[\s_-]+", "-", s)
-    s = re.sub(r"^-+|-+$", "", s)
-    return s
-
-
-def now_iso_8601():
-    now = datetime.now()
-    now_date = now.strftime("%Y-%m-%dT%H:%M:%SZ")
-    return now_date
-
-
 def environment(**options):
     env = Environment(**options)
 
@@ -74,6 +58,7 @@ def environment(**options):
                 "BUILD_VERSION": settings.BUILD_VERSION,
                 "TNA_FRONTEND_VERSION": TNA_FRONTEND_VERSION,
                 "COOKIE_DOMAIN": settings.COOKIE_DOMAIN,
+                "COOKIE_PREFERENCES_URL": settings.COOKIE_PREFERENCES_URL,
             },
             "url_for": reverse,
             "now_iso_8601": now_iso_8601,

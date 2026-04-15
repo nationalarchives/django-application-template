@@ -577,6 +577,24 @@ jinja2 = ">=3"
 wtforms = ["flask-wtf[email]"]
 
 [[package]]
+name = "tna-utilities"
+version = "1.4.0"
+description = "A library of common National Archives Python functions"
+optional = false
+python-versions = ">=3.10"
+groups = ["main"]
+files = [
+    {file = "tna_utilities-1.4.0-py3-none-any.whl", hash = "sha256:0dcbb38efc1f27b87c3de47dc421bbf572595bb661127c0a893dff9981538022"},
+    {file = "tna_utilities-1.4.0.tar.gz", hash = "sha256:b36cd0319122d5f3ff2d17bf0f1193cae4924370ab6fcc60f8c07a5ad4b4bfe5"},
+]
+
+[package.dependencies]
+requests = "*"
+
+[package.extras]
+flask = ["Flask"]
+
+[[package]]
 name = "tzdata"
 version = "2025.3"
 description = "Provider of IANA time zone data"
@@ -625,4 +643,4 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "31b3a8c6f22c86a6138d727de52e87d9c0fef0d385e8ea4b534ec5e86e40bdc1"
+content-hash = "3bc9fbfed840ff915061c7d6b88f3d0e8cf95e2e98273a78a5b79fa4bf44d0de"
