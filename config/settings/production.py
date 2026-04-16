@@ -153,7 +153,19 @@ if not SECRET_KEY:
     )
 
 DEBUG: bool = False
-LOG_LEVEL: str = os.environ.get("LOG_LEVEL", "debug").upper()
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": os.environ.get("LOG_LEVEL", "warning").upper(),
+    },
+}
 
 COOKIE_DOMAIN: str = os.environ.get("COOKIE_DOMAIN", "")
 COOKIE_PREFERENCES_URL: str = os.environ.get("COOKIE_PREFERENCES_URL", "/cookies/")
