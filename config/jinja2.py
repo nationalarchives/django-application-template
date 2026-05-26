@@ -1,13 +1,14 @@
 import json
 
-from app.lib.context_processor import now_iso_8601
-from app.lib.template_filters import slugify
 from django import template
 from django.conf import settings
 from django.templatetags.static import StaticNode
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from jinja2 import Environment
+
+from app.lib.context_processor import now_iso_8601
+from app.lib.template_filters import slugify
 
 register = template.Library()
 
