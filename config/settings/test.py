@@ -1,7 +1,7 @@
 import os
 
-from .features import *  # noqa: F401, F403
-from .production import *  # noqa: F401, F403
+from .features import *
+from .production import *
 from .production import BASE_DIR, INSTALLED_APPS
 
 ENVIRONMENT_NAME = "test"
@@ -14,7 +14,7 @@ INSTALLED_APPS = INSTALLED_APPS + ["test"]
 SECRET_KEY = "abc123"
 
 DEBUG = True
-LOGGING["root"]["level"] = "DEBUG"  # noqa: F405
+LOGGING["root"]["level"] = "DEBUG"
 
 DATABASES = {
     "default": {
