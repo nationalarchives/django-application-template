@@ -607,14 +607,14 @@ doc = ["furo", "sphinx"]
 
 [[package]]
 name = "tna-frontend-jinja"
-version = "1.3.0"
+version = "1.4.0"
 description = "TNA Frontend Jinja templates"
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "tna_frontend_jinja-1.3.0-py3-none-any.whl", hash = "sha256:b3404377c6e913cf4e0877aeafbc5423a065a79480a8cea06d8376da07955651"},
-    {file = "tna_frontend_jinja-1.3.0.tar.gz", hash = "sha256:8bc42b5fd309eb90724cdb693ae01d8efdb867595e32fe4d64160e6d8105cf64"},
+    {file = "tna_frontend_jinja-1.4.0-py3-none-any.whl", hash = "sha256:1031e4102195fa79a9e52dcc255a46857df9a7c29a3acfe939c2827110c7f495"},
+    {file = "tna_frontend_jinja-1.4.0.tar.gz", hash = "sha256:374058bafd75dbae2aa21c9470505d58dfd57e0ab5f8e98864b231aec577ebe1"},
 ]
 
 [package.dependencies]
@@ -690,4 +690,4 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "e932804187646836009d51f96c313d26da664a35774e1a06c4ee41e62278a20f"
+content-hash = "8baefb6003278bde79e6a2b7e0e280c9b3754f3a0cb663d2de98745d27243876"
