@@ -66,4 +66,7 @@ def environment(**options):
         }
     )
     env.filters.update({"slugify": slugify})
+    env.trim_blocks = True
+    env.lstrip_blocks = True
+    env.autoescape = True
     return env
