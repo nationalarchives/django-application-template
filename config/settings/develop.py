@@ -13,16 +13,20 @@ if DEBUG:
     try:
         import debug_toolbar  # noqa: F401
 
-        INSTALLED_APPS += [
+        INSTALLED_APPS = [
+            *INSTALLED_APPS,
             "debug_toolbar",
         ]
 
         MIDDLEWARE = [
             "debug_toolbar.middleware.DebugToolbarMiddleware",
-        ] + MIDDLEWARE
+            *MIDDLEWARE,
+        ]
 
         DEBUG_TOOLBAR_CONFIG = {
-            "SHOW_TOOLBAR_CALLBACK": lambda request: True,
+            "SHOW_TOOLBAR_CALLBACK": lambda request: (
+                request.get_host() in ["localhost:82"]
+            ),
             "SHOW_COLLAPSED": True,
         }
     except ImportError:
