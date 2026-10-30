@@ -1,11 +1,11 @@
 [tool.poetry.dependencies]
 python = "~3.15"
-django = "~6.0"
-requests = "^2.31.0"
-psycopg2-binary = "^2.9.9"
-whitenoise = "^6.7.0"
-tna-frontend-jinja = "1.4.0"
-tna-utilities = "^1.9.0"
+django = "~6.1"
+requests = "~2.34"
+psycopg2-binary = "~2.9"
+whitenoise = "~6.12"
+tna-frontend-jinja = "1.6.0"
+tna-utilities = "~1.9"
 
 [tool.poetry]
 package-mode = false
@@ -14,8 +14,8 @@ package-mode = false
 optional = true
 
 [tool.poetry.group.dev.dependencies]
-requests-mock = "^1.12.1"
-pytest-django = "^4.11.1"
+requests-mock = "~1.12"
+pytest-django = "~4.14"
 
 [tool.pytest.ini_options]
 testpaths = [
