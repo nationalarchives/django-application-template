@@ -17,9 +17,6 @@ optional = true
 requests-mock = "^1.12.1"
 pytest-django = "^4.11.1"
 
-[tool.black]
-include = '\.pyi?$'
-
 [tool.pytest.ini_options]
 testpaths = [
     "test",
