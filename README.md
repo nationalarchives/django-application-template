@@ -8,29 +8,11 @@ docker compose up -d
 
 # When you start the app for the first time, you need to run the migrations
 docker compose exec app poetry run python manage.py migrate
-```
 
-### Add the static assets
-
-During the first time install, your `app/static/assets` directory will be empty.
-
-As you mount the project directory to the `/app` volume, the static assets from TNA Frontend installed inside the container will be "overwritten" by your empty directory.
-
-To add back in the static assets, run:
-
-```sh
-docker compose exec app cp -r /app/node_modules/@nationalarchives/frontend/nationalarchives/assets /app/app/static
-```
-
-### Run tests
-
-```sh
+# Run tests
 docker compose exec app poetry run pytest --ds=config.settings.test
-```
 
-### Format and lint code
-
-```sh
+# Format and lint code
 docker compose exec app format
 ```
 

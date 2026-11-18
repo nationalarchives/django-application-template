@@ -10,6 +10,11 @@ BUILD_VERSION = "test"
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 
 INSTALLED_APPS = INSTALLED_APPS + ["test"]
+MIDDLEWARE = [
+    middleware
+    for middleware in MIDDLEWARE
+    if middleware != "whitenoise.middleware.WhiteNoiseMiddleware"
+]
 
 SECRET_KEY = "abc123"
 

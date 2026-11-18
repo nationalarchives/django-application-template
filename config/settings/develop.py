@@ -7,7 +7,7 @@ from .production import *
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 
-DEBUG: bool = strtobool(os.getenv("DEBUG", "False"))
+DEBUG: bool = strtobool(os.getenv("DEBUG", "True"))
 
 if DEBUG:
     try:
