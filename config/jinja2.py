@@ -1,4 +1,5 @@
 import json
+import os
 
 from django import template
 from django.conf import settings
@@ -38,15 +39,20 @@ def environment(**options):
 
     TNA_FRONTEND_VERSION = ""
     try:
-        with open(
-            "/app/node_modules/@nationalarchives/frontend/package.json",
-        ) as package_json:
-            try:
-                data = json.load(package_json)
-                TNA_FRONTEND_VERSION = data["version"] or ""
-            except ValueError:
-                pass
+        package_lock_json_path = os.path.join(
+            os.path.realpath(os.path.dirname(__file__)),
+            "../",
+            "package-lock.json",
+        )
+        with open(package_lock_json_path) as package_json:
+            data = json.load(package_json)
+            TNA_FRONTEND_VERSION = (
+                data.get("packages", {})
+                .get("node_modules/@nationalarchives/frontend", {})
+                .get("version", "")
+            )
     except FileNotFoundError:
+        # Error getting version of TNA frontend
         pass
 
     env.globals.update(
