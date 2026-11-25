@@ -1,5 +1,6 @@
 import json
 import os
+import tomllib
 
 from django import template
 from django.conf import settings
@@ -44,8 +45,8 @@ def environment(**options):
             "../",
             "package-lock.json",
         )
-        with open(package_lock_json_path) as package_json:
-            data = json.load(package_json)
+        with open(package_lock_json_path, "r") as package_lock_json:
+            data = json.load(package_lock_json)
             TNA_FRONTEND_VERSION = (
                 data.get("packages", {})
                 .get("node_modules/@nationalarchives/frontend", {})
@@ -53,6 +54,23 @@ def environment(**options):
             )
     except FileNotFoundError:
         # Error getting version of TNA frontend
+        pass
+
+    TNA_FRONTEND_JINJA_VERSION = ""
+    try:
+        poetry_lock_toml_path = os.path.join(
+            os.path.realpath(os.path.dirname(__file__)),
+            "../",
+            "poetry.lock",
+        )
+        with open(poetry_lock_toml_path, "rb") as poetry_lock_toml:
+            data = tomllib.load(poetry_lock_toml)
+            for package in data.get("package", []):
+                if package.get("name") == "tna-frontend-jinja":
+                    TNA_FRONTEND_JINJA_VERSION = package.get("version", "")
+                    break
+    except FileNotFoundError:
+        # Error getting version of TNA frontend Jinja
         pass
 
     env.globals.update(
@@ -64,6 +82,7 @@ def environment(**options):
                 "CONTAINER_IMAGE": settings.CONTAINER_IMAGE,
                 "BUILD_VERSION": settings.BUILD_VERSION,
                 "TNA_FRONTEND_VERSION": TNA_FRONTEND_VERSION,
+                "TNA_FRONTEND_JINJA_VERSION": TNA_FRONTEND_JINJA_VERSION,
                 "COOKIE_DOMAIN": settings.COOKIE_DOMAIN,
                 "COOKIE_PREFERENCES_URL": settings.COOKIE_PREFERENCES_URL,
             },
